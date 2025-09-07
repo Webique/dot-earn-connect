@@ -1,132 +1,139 @@
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Zap, Award, Rocket } from 'lucide-react';
+import useEmblaCarousel, { EmblaCarouselType } from 'embla-carousel-react';
+import { Sparkles, Rocket, Users, Stars } from 'lucide-react';
 
 const TheDot = () => {
   const { t, dir } = useLanguage();
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'start' });
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  const onSelect = useCallback((api: EmblaCarouselType) => {
+    setSelectedIndex(api.selectedScrollSnap());
+  }, []);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    emblaApi.on('select', () => onSelect(emblaApi));
+    onSelect(emblaApi);
+  }, [emblaApi, onSelect]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    const interval = setInterval(() => {
+      if (!emblaApi) return;
+      emblaApi.scrollNext();
+    }, 4500);
+    return () => clearInterval(interval);
+  }, [emblaApi]);
+
+  const slides = [
+    {
+      icon: <Sparkles className="h-8 w-8" />, 
+      title: dir === 'rtl' ? 'اسم لا يُنسى' : 'A Name You Remember',
+      text: dir === 'rtl' 
+        ? 'بساطة تجعل العلامة لاصقة في الذاكرة—نقطة تترك أثراً.'
+        : 'Simplicity that sticks—Dot leaves a memorable mark.'
+    },
+    {
+      icon: <Rocket className="h-8 w-8" />, 
+      title: dir === 'rtl' ? 'إقلاع المشاريع' : 'Projects, Launched',
+      text: dir === 'rtl' 
+        ? 'حيث تنطلق الأفكار إلى الضوء وتصل للجمهور المناسب.'
+        : 'Where ideas lift off and meet the right audience.'
+    },
+    {
+      icon: <Users className="h-8 w-8" />, 
+      title: dir === 'rtl' ? 'مجتمع حي' : 'A Living Community',
+      text: dir === 'rtl' 
+        ? 'نقطة التقاء الناس مع القصص التي تؤثر عليهم.'
+        : 'A meeting point where people connect with stories that move them.'
+    },
+    {
+      icon: <Stars className="h-8 w-8" />, 
+      title: dir === 'rtl' ? 'نهاية البحث' : 'End of the Search',
+      text: dir === 'rtl' 
+        ? 'المكان الذي يجد فيه المستخدم ما يريد—بوضوح وعدالة.'
+        : 'Where users finally find what they seek—clearly and fairly.'
+    },
+  ];
 
   return (
-    <section id="the-dot" className="section-secondary py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="heading-lg mb-6 text-gradient">
-            {t('the-dot.title')}
-          </h2>
+    <section id="the-dot" className="relative overflow-hidden py-24">
+      {/* Ambient shapes */}
+      <div className="pointer-events-none absolute inset-0 opacity-50">
+        <div className="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-dot-vivid-purple/20 blur-3xl" />
+        <div className="absolute -bottom-24 -right-24 h-72 w-72 rounded-full bg-dot-royal-magenta/20 blur-3xl" />
+      </div>
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-14">
+          <h2 className="heading-lg mb-3 text-gradient">{t('the-dot.title')}</h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            {dir === 'rtl' 
+              ? 'حكاية علامة تُبنى حول نقطة—مباشرة، صادقة، ومؤثرة.'
+              : 'A brand story built around a dot—direct, honest, and impactful.'}
+          </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Visual - Dot Symbol */}
-          <div className={`${dir === 'rtl' ? 'lg:order-2' : 'lg:order-1'} slide-right`}>
-            <div className="relative flex items-center justify-center">
-              {/* Central Dot */}
-              <div className="relative z-10 w-32 h-32 bg-gradient-accent rounded-full flex items-center justify-center shadow-glow">
-                <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center">
-                  <div className="w-8 h-8 bg-gradient-accent rounded-full animate-pulse"></div>
+        {/* Carousel */}
+        <div className="embla" ref={emblaRef}>
+          <div className={`embla__container flex ${dir === 'rtl' ? 'flex-row-reverse' : ''}`}>
+            {slides.map((slide, idx) => (
+              <div key={idx} className="embla__slide min-w-0 flex-[0_0_100%] sm:flex-[0_0_80%] lg:flex-[0_0_60%] px-3">
+                <div className="relative overflow-hidden rounded-3xl p-8 sm:p-10 bg-gradient-subtle card-elegant h-full">
+                  <div className="absolute -top-10 -right-10 h-40 w-40 rounded-full bg-gradient-accent blur-2xl opacity-30" />
+                  <div className="flex items-start space-x-4">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-primary text-white grid place-items-center shadow-elegant">
+                      {slide.icon}
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-semibold mb-2">{slide.title}</h3>
+                      <p className="text-muted-foreground leading-relaxed">{slide.text}</p>
+                    </div>
+                  </div>
+                  <div className="mt-8 relative">
+                    <div className="h-2 w-full rounded-full bg-secondary/40 overflow-hidden">
+                      <div
+                        className="h-full bg-gradient-to-r from-dot-royal-magenta to-dot-vivid-purple"
+                        style={{ width: `${((idx + 1) / slides.length) * 100}%` }}
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
-
-              {/* Orbiting Elements */}
-              <div className="absolute inset-0">
-                {/* Projects */}
-                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-4">
-                  <div className="w-16 h-16 bg-primary rounded-lg flex items-center justify-center shadow-elegant">
-                    <Rocket className="h-8 w-8 text-white" />
-                  </div>
-                  <p className="text-xs text-center mt-2 font-medium">
-                    {dir === 'rtl' ? 'المشاريع' : 'Projects'}
-                  </p>
-                </div>
-
-                {/* People */}
-                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-4">
-                  <div className="w-16 h-16 bg-accent rounded-lg flex items-center justify-center shadow-elegant">
-                    <Award className="h-8 w-8 text-white" />
-                  </div>
-                  <p className="text-xs text-center mt-2 font-medium">
-                    {dir === 'rtl' ? 'الأفراد' : 'People'}
-                  </p>
-                </div>
-
-                {/* Success */}
-                <div className={`absolute top-1/2 transform -translate-y-1/2 ${
-                  dir === 'rtl' ? 'left-0 -translate-x-4' : 'right-0 translate-x-4'
-                }`}>
-                  <div className="w-16 h-16 bg-secondary rounded-lg flex items-center justify-center shadow-elegant">
-                    <Zap className="h-8 w-8 text-primary" />
-                  </div>
-                  <p className="text-xs text-center mt-2 font-medium">
-                    {dir === 'rtl' ? 'النجاح' : 'Success'}
-                  </p>
-                </div>
-              </div>
-
-              {/* Connection Lines */}
-              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 200">
-                <defs>
-                  <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="hsl(var(--dot-royal-magenta))" />
-                    <stop offset="100%" stopColor="hsl(var(--dot-vivid-purple))" />
-                  </linearGradient>
-                </defs>
-                <circle
-                  cx="100"
-                  cy="100"
-                  r="60"
-                  fill="none"
-                  stroke="url(#lineGradient)"
-                  strokeWidth="2"
-                  strokeDasharray="5,5"
-                  opacity="0.5"
-                />
-              </svg>
-            </div>
+            ))}
           </div>
+        </div>
 
-          {/* Content */}
-          <div className={`${dir === 'rtl' ? 'lg:order-1' : 'lg:order-2'} slide-left`}>
-            <p className="text-lg leading-relaxed text-muted-foreground mb-8">
-              {t('the-dot.content')}
-            </p>
+        {/* Dots */}
+        <div className={`flex items-center justify-center mt-8 ${dir === 'rtl' ? 'space-x-reverse' : ''} space-x-2`}>
+          {slides.map((_, i) => (
+            <button
+              key={i}
+              className={`h-2.5 w-2.5 rounded-full transition-all ${
+                selectedIndex === i ? 'bg-primary scale-110' : 'bg-secondary'
+              }`}
+              onClick={() => emblaApi && emblaApi.scrollTo(i)}
+              aria-label={`Go to slide ${i + 1}`}
+            />
+          ))}
+        </div>
 
-            {/* Key Concepts */}
-            <div className="space-y-6">
-              <div className="card-feature">
-                <h3 className="font-semibold text-lg mb-2 text-primary">
-                  {dir === 'rtl' ? '• البساطة والوضوح' : '• Simple & Clear'}
-                </h3>
-                <p className="text-muted-foreground">
-                  {dir === 'rtl' 
-                    ? 'اسم سهل الحفظ والانتشار، يحمل معنى عميق ومفهوم عالمي.'
-                    : 'A name that\'s easy to remember and spread, carrying deep meaning and universal understanding.'
-                  }
-                </p>
-              </div>
-
-              <div className="card-feature">
-                <h3 className="font-semibold text-lg mb-2 text-primary">
-                  {dir === 'rtl' ? '• نقطة البداية والنهاية' : '• Start & End Point'}
-                </h3>
-                <p className="text-muted-foreground">
-                  {dir === 'rtl' 
-                    ? 'حيث تبدأ المشاريع رحلة الشهرة وينتهي بحث المستخدمين عن الفرص.'
-                    : 'Where projects start their fame journey and users end their search for opportunities.'
-                  }
-                </p>
-              </div>
-
-              <div className="card-feature">
-                <h3 className="font-semibold text-lg mb-2 text-primary">
-                  {dir === 'rtl' ? '• نقطة التقاء' : '• Meeting Point'}
-                </h3>
-                <p className="text-muted-foreground">
-                  {dir === 'rtl' 
-                    ? 'المكان الذي يلتقي فيه الطموح مع التنفيذ، والتسويق مع العدالة.'
-                    : 'Where ambition meets execution, and marketing meets fairness.'
-                  }
-                </p>
-              </div>
-            </div>
-          </div>
+        {/* Controls */}
+        <div className={`mt-6 flex items-center justify-center space-x-3 ${dir === 'rtl' ? 'space-x-reverse' : ''}`}>
+          <button
+            className="btn-primary px-4 py-2 rounded-lg"
+            onClick={() => emblaApi && emblaApi.scrollPrev()}
+          >
+            {dir === 'rtl' ? 'السابق' : 'Prev'}
+          </button>
+          <button
+            className="btn-primary px-4 py-2 rounded-lg"
+            onClick={() => emblaApi && emblaApi.scrollNext()}
+          >
+            {dir === 'rtl' ? 'التالي' : 'Next'}
+          </button>
         </div>
       </div>
     </section>

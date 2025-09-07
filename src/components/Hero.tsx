@@ -6,11 +6,8 @@ import { useLanguage } from '@/contexts/LanguageContext';
 const Hero = () => {
   const { t, dir } = useLanguage();
 
-  const handleJoinWaitlist = () => {
-    const element = document.querySelector('#contact');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+  const handleContactUs = () => {
+    window.open('tel:+966551161726', '_self');
   };
 
   return (
@@ -54,10 +51,10 @@ const Hero = () => {
           }`}>
             <Button 
               size="lg"
-              className="btn-hero text-lg px-8 py-4"
-              onClick={handleJoinWaitlist}
+              className="bg-white text-primary hover:bg-primary hover:text-white border-2 border-white hover:border-primary text-lg px-8 py-4 font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+              onClick={handleContactUs}
             >
-              {t('hero.cta')}
+              {dir === 'rtl' ? 'تواصل معنا' : 'Contact Us'}
               <ArrowRight className={`h-5 w-5 ${dir === 'rtl' ? 'rotate-180 mr-2' : 'ml-2'}`} />
             </Button>
           </div>

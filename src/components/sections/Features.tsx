@@ -60,92 +60,63 @@ const Features = () => {
   ];
 
   return (
-    <section id="features" className="section-primary py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="heading-lg mb-6 text-gradient">
-            {t('features.title')}
-          </h2>
-          <div className="w-24 h-1 bg-gradient-accent mx-auto rounded-full"></div>
+    <section id="features" className="relative py-24 overflow-hidden section-primary">
+      <div className="pointer-events-none absolute inset-0 opacity-30">
+        <div className="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-dot-vivid-purple/15 blur-3xl" />
+        <div className="absolute -bottom-24 -right-24 h-72 w-72 rounded-full bg-dot-royal-magenta/15 blur-3xl" />
+      </div>
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-14">
+          <h2 className="heading-lg mb-3 text-gradient">{t('features.title')}</h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            {dir === 'rtl' ? 'خدمات متناسقة مع هوية دوت المرئية.' : 'Services aligned with the DOT visual language.'}
+          </p>
         </div>
 
-        {/* Features Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        {/* Clean alternating layout */}
+        <div className="space-y-8">
           {features.map((feature, index) => {
             const Icon = feature.icon;
+            const isEven = index % 2 === 0;
             return (
               <div
                 key={feature.titleKey}
-                className="group card-elegant hover:scale-105 transition-all duration-300"
+                className="relative overflow-hidden rounded-3xl border border-secondary/20 bg-gradient-subtle"
               >
-                <div className={`w-16 h-16 bg-gradient-to-br ${feature.gradient} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
-                  <Icon className="h-8 w-8 text-white" />
+                <div className={`grid lg:grid-cols-2 gap-0 items-stretch min-h-[200px]`}>
+                  {/* Visual side */}
+                  <div className={`hidden lg:block ${isEven ? 'order-1' : 'order-2'} bg-secondary/10`}>
+                    <div className="h-full w-full relative p-8">
+                      <div className="absolute inset-0 bg-gradient-to-br from-dot-royal-magenta/20 to-dot-vivid-purple/20" />
+                      <div className="absolute inset-4 rounded-2xl border border-secondary/30" />
+                      <div className="relative z-10 h-full flex items-center justify-center">
+                        <div className="w-20 h-20 rounded-2xl bg-primary/20 flex items-center justify-center">
+                          <Icon className="h-10 w-10 text-primary" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Content side */}
+                  <div className={`${isEven ? 'order-2' : 'order-1'} p-8 sm:p-12 flex items-center`}>
+                    <div className={`flex items-start ${dir === 'rtl' ? 'space-x-reverse flex-row-reverse' : ''} space-x-4`}>
+                      <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-secondary/40 grid place-items-center lg:hidden">
+                        <Icon className="h-7 w-7 text-primary" />
+                      </div>
+                      <div>
+                        <h3 className="text-2xl sm:text-3xl font-semibold mb-3 text-primary">{t(feature.titleKey)}</h3>
+                        <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">{t(feature.descKey)}</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-
-                <h3 className="text-xl font-bold mb-4 text-primary group-hover:text-accent transition-colors">
-                  {t(feature.titleKey)}
-                </h3>
-
-                <p className="text-muted-foreground leading-relaxed">
-                  {t(feature.descKey)}
-                </p>
               </div>
             );
           })}
         </div>
-
-        {/* Core Value Proposition */}
-        <div className="bg-gradient-to-r from-dot-cosmic-indigo to-dot-royal-magenta rounded-3xl p-8 md:p-12 text-white relative overflow-hidden">
-          <div className="relative z-10">
-            <div className={`flex items-start space-x-6 ${dir === 'rtl' ? 'space-x-reverse flex-row-reverse' : ''}`}>
-              <div className="flex-shrink-0">
-                <div className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center">
-                  <Zap className="h-10 w-10 text-white" />
-                </div>
-              </div>
-              
-              <div className="flex-1">
-                <h3 className="text-2xl md:text-3xl font-bold mb-4">
-                  {dir === 'rtl' 
-                    ? 'منصة شاملة للاقتصاد الرقمي التشاركي' 
-                    : 'Complete Platform for Participatory Digital Economy'
-                  }
-                </h3>
-                
-                <p className="text-lg mb-6 text-white/90 leading-relaxed">
-                  {dir === 'rtl'
-                    ? 'دوت ليست مجرد منصة إعلانية؛ إنها نظام بيئي متكامل يجمع بين التسويق التشاركي والمنتجات الرقمية والمكافآت الذكية، لتمكين كل فرد من بناء دخل مستدام من جهازه الشخصي.'
-                    : 'DOT isn\'t just an advertising platform; it\'s a complete ecosystem combining participatory marketing, digital products, and smart rewards, empowering every individual to build sustainable income from their personal device.'
-                  }
-                </p>
-
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-white rounded-full"></div>
-                    <span>{dir === 'rtl' ? 'ربح عادل ومضمون' : 'Fair & guaranteed earnings'}</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-white rounded-full"></div>
-                    <span>{dir === 'rtl' ? 'تسويق ذكي ومستهدف' : 'Smart & targeted marketing'}</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-white rounded-full"></div>
-                    <span>{dir === 'rtl' ? 'منتجات رقمية متنوعة' : 'Diverse digital products'}</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-white rounded-full"></div>
-                    <span>{dir === 'rtl' ? 'شفافية كاملة' : 'Complete transparency'}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Background Decoration */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-48 h-48 bg-dot-vivid-purple/30 rounded-full blur-2xl"></div>
-        </div>
       </div>
+
     </section>
   );
 };

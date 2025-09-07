@@ -51,7 +51,7 @@ const Footer = () => {
                 </div>
                 <div className={`flex items-center space-x-3 text-white/70 ${dir === 'rtl' ? 'space-x-reverse flex-row-reverse' : ''}`}>
                   <span>📱</span>
-                  <span>+966 55 116 1726</span>
+                  <span dir="ltr">+966 55 116 1726</span>
                 </div>
               </div>
             </div>
@@ -84,23 +84,6 @@ const Footer = () => {
                 {t('footer.cta')}
               </h4>
               
-              <div className="space-y-4">
-                <Button 
-                  className="btn-primary w-full"
-                  onClick={() => handleNavClick('#contact')}
-                >
-                  {t('contact.cta1')}
-                  <ArrowRight className={`h-4 w-4 ${dir === 'rtl' ? 'rotate-180 mr-2' : 'ml-2'}`} />
-                </Button>
-                
-                <Button 
-                  variant="outline" 
-                  className="w-full border-white/30 text-white hover:bg-white hover:text-dot-deep-plum"
-                  onClick={() => handleNavClick('#contact')}
-                >
-                  {t('contact.cta2')}
-                </Button>
-              </div>
 
               {/* Newsletter Signup Preview */}
               <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
