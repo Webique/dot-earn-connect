@@ -25,50 +25,50 @@ const Hero = () => {
         </svg>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="fade-in">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-6 lg:px-8 text-center">
+        <div className="fade-in py-8 sm:py-12">
 
           {/* Main Heading */}
-          <h1 className="heading-xl hero-text mb-6 max-w-4xl mx-auto">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 max-w-4xl mx-auto leading-tight">
             {t('hero.headline')}
           </h1>
 
           {/* Subheading */}
-          <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 mb-6 sm:mb-8 max-w-3xl mx-auto leading-relaxed px-2">
             {t('hero.subline')}
           </p>
 
           {/* CTA Buttons */}
-          <div className={`flex flex-col sm:flex-row gap-4 justify-center items-center ${
+          <div className={`flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-8 sm:mb-12 ${
             dir === 'rtl' ? 'sm:flex-row-reverse' : ''
           }`}>
             <Button 
               size="lg"
-              className="bg-white text-primary hover:bg-primary hover:text-white border-2 border-white hover:border-primary text-lg px-8 py-4 font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+              className="bg-white text-primary hover:bg-primary hover:text-white border-2 border-white hover:border-primary text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 w-full sm:w-auto"
               onClick={handleContactUs}
             >
               {dir === 'rtl' ? 'تواصل معنا' : 'Contact Us'}
-              <ArrowRight className={`h-5 w-5 ${dir === 'rtl' ? 'rotate-180 mr-2' : 'ml-2'}`} />
+              <ArrowRight className={`h-4 w-4 sm:h-5 sm:w-5 ${dir === 'rtl' ? 'rotate-180 mr-2' : 'ml-2'}`} />
             </Button>
           </div>
 
           {/* Stats/Numbers */}
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-2xl mx-auto">
-            <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-white mb-2">1000+</div>
-              <div className="text-white/70">
+          <div className="mt-8 sm:mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 max-w-2xl mx-auto">
+            <div className="text-center bg-white/5 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-white/10">
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1 sm:mb-2">1000+</div>
+              <div className="text-white/70 text-sm sm:text-base">
                 {dir === 'rtl' ? 'مستخدم منتظر' : 'Users Waiting'}
               </div>
             </div>
-            <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-white mb-2">100+</div>
-              <div className="text-white/70">
+            <div className="text-center bg-white/5 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-white/10">
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1 sm:mb-2">100+</div>
+              <div className="text-white/70 text-sm sm:text-base">
                 {dir === 'rtl' ? 'شركة مهتمة' : 'Interested Companies'}
               </div>
             </div>
-            <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-white mb-2">50+</div>
-              <div className="text-white/70">
+            <div className="text-center bg-white/5 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-white/10">
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1 sm:mb-2">50+</div>
+              <div className="text-white/70 text-sm sm:text-base">
                 {dir === 'rtl' ? 'مبدع محتوى' : 'Content Creators'}
               </div>
             </div>
