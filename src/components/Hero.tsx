@@ -11,7 +11,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="section-hero min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section id="home" className="section-hero min-h-screen flex items-center justify-center relative overflow-hidden pt-20 sm:pt-0">
       {/* Dot Matrix Background */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0 bg-gradient-to-br from-dot-vivid-purple/20 via-transparent to-dot-warm-rose/20"></div>
@@ -26,7 +26,7 @@ const Hero = () => {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-6 lg:px-8 text-center">
-        <div className="fade-in py-12 sm:py-16 lg:py-20 flex flex-col justify-center min-h-screen">
+        <div className="fade-in py-8 sm:py-16 lg:py-20 flex flex-col justify-center min-h-[calc(100vh-5rem)] sm:min-h-screen">
 
           {/* Main Heading */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 max-w-4xl mx-auto leading-tight">
