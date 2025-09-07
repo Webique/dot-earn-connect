@@ -9,7 +9,7 @@ const Vision = () => {
     <section id="vision" className="section-primary py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="heading-lg mb-6 text-gradient">
+          <h2 className="heading-lg mb-6 text-gradient" style={{ lineHeight: '1.3', paddingBottom: '0.3em' }}>
             {t('vision.title')}
           </h2>
           <div className="w-24 h-1 bg-gradient-accent mx-auto rounded-full"></div>

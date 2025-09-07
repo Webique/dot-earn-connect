@@ -42,7 +42,7 @@ const Solution = () => {
     <section id="solution" className="section-secondary py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="heading-lg mb-6 text-gradient">
+          <h2 className="heading-lg mb-6 text-gradient" style={{ lineHeight: '1.3', paddingBottom: '0.3em' }}>
             {t('solution.title')}
           </h2>
           <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
@@ -74,44 +74,45 @@ const Solution = () => {
         </div>
 
         {/* Key Innovation Box */}
-        <div className="bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 rounded-2xl p-8 border border-green-200/50 dark:border-green-800/50">
-          <div className={`flex items-start space-x-6 ${dir === 'rtl' ? 'space-x-reverse flex-row-reverse' : ''}`}>
+        <div className="bg-gradient-to-r from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20 rounded-2xl p-6 border border-red-200/50 dark:border-red-800/50 max-w-4xl mx-auto">
+          <div className="flex items-start space-x-6">
             <div className="flex-shrink-0">
-              <div className="w-16 h-16 bg-gradient-accent rounded-xl flex items-center justify-center">
-                <CheckCircle className="h-8 w-8 text-white" />
-              </div>
+              <CheckCircle className="h-8 w-8 text-red-500" />
             </div>
-            <div>
-              <h3 className="text-2xl font-bold mb-4 text-green-800 dark:text-green-200">
+            <div className="flex-1">
+              <h3 className="text-xl font-semibold mb-3 text-red-800 dark:text-red-200">
                 {dir === 'rtl' ? 'الابتكار الأساسي' : 'Core Innovation'}
               </h3>
-              <p className="text-lg text-green-700 dark:text-green-300 leading-relaxed mb-4">
-                {t('solution.conclusion')}
+              <p className="text-red-700 dark:text-red-300 leading-relaxed mb-4">
+                {dir === 'rtl' 
+                  ? 'دوت لا تقدم مجرد مساحة إعلانية؛ بل تصنع مجتمعًا إعلانيًا جديدًا حيث كل دقيقة على المنصة = قيمة.'
+                  : t('solution.conclusion')
+                }
               </p>
               
               {/* Benefits Grid */}
-              <div className="grid sm:grid-cols-2 gap-4 mt-6">
+              <div className="grid sm:grid-cols-2 gap-3">
                 <div className={`flex items-center space-x-3 ${dir === 'rtl' ? 'space-x-reverse flex-row-reverse' : ''}`}>
-                  <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0" />
-                  <span className="text-green-700 dark:text-green-300">
+                  <CheckCircle className="h-5 w-5 text-red-600 flex-shrink-0" />
+                  <span className="text-red-700 dark:text-red-300 text-sm">
                     {dir === 'rtl' ? 'دخل عادل للجميع' : 'Fair income for everyone'}
                   </span>
                 </div>
                 <div className={`flex items-center space-x-3 ${dir === 'rtl' ? 'space-x-reverse flex-row-reverse' : ''}`}>
-                  <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0" />
-                  <span className="text-green-700 dark:text-green-300">
+                  <CheckCircle className="h-5 w-5 text-red-600 flex-shrink-0" />
+                  <span className="text-red-700 dark:text-red-300 text-sm">
                     {dir === 'rtl' ? 'تسويق بتكلفة عادلة' : 'Fair-priced marketing'}
                   </span>
                 </div>
                 <div className={`flex items-center space-x-3 ${dir === 'rtl' ? 'space-x-reverse flex-row-reverse' : ''}`}>
-                  <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0" />
-                  <span className="text-green-700 dark:text-green-300">
+                  <CheckCircle className="h-5 w-5 text-red-600 flex-shrink-0" />
+                  <span className="text-red-700 dark:text-red-300 text-sm">
                     {dir === 'rtl' ? 'تفاعل حقيقي' : 'Authentic engagement'}
                   </span>
                 </div>
                 <div className={`flex items-center space-x-3 ${dir === 'rtl' ? 'space-x-reverse flex-row-reverse' : ''}`}>
-                  <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0" />
-                  <span className="text-green-700 dark:text-green-300">
+                  <CheckCircle className="h-5 w-5 text-red-600 flex-shrink-0" />
+                  <span className="text-red-700 dark:text-red-300 text-sm">
                     {dir === 'rtl' ? 'شفافية كاملة' : 'Complete transparency'}
                   </span>
                 </div>

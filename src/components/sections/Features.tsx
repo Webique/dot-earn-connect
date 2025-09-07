@@ -68,7 +68,7 @@ const Features = () => {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
-          <h2 className="heading-lg mb-3 text-gradient">{t('features.title')}</h2>
+          <h2 className="heading-lg mb-3 text-gradient" style={{ lineHeight: '1.3', paddingBottom: '0.3em' }}>{t('features.title')}</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             {dir === 'rtl' ? 'خدمات متناسقة مع هوية دوت المرئية.' : 'Services aligned with the DOT visual language.'}
           </p>
