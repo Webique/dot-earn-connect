@@ -27,13 +27,6 @@ const Hero = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="fade-in">
-          {/* Brand Badge */}
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-8">
-            <Sparkles className="h-4 w-4 text-dot-vivid-purple mr-2" />
-            <span className="text-white font-medium">
-              {dir === 'rtl' ? 'دوت - نقطة جديدة في عالم الإعلان' : 'DOT - A New Point in Advertising'}
-            </span>
-          </div>
 
           {/* Main Heading */}
           <h1 className="heading-xl hero-text mb-6 max-w-4xl mx-auto">
