@@ -1,42 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* DOT Design System - All colors MUST be HSL */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* DOT Brand Colors */
+    --dot-deep-plum: 300 100% 5%;           /* #190019 */
+    --dot-cosmic-indigo: 264 63% 11%;       /* #2B124C */
+    --dot-royal-magenta: 286 37% 22%;       /* #52285B */
+    --dot-vivid-purple: 269 43% 53%;        /* #854FBC */
+    --dot-warm-rose: 11 59% 74%;            /* #DFB6B2 */
+    --dot-soft-sand: 25 78% 92%;            /* #FBE4D8 */
+
+    /* Semantic mappings */
+    --background: var(--dot-soft-sand);
+    --foreground: var(--dot-deep-plum);
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: var(--dot-deep-plum);
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: var(--dot-deep-plum);
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: var(--dot-royal-magenta);
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: var(--dot-warm-rose);
+    --secondary-foreground: var(--dot-deep-plum);
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: var(--dot-soft-sand);
+    --muted-foreground: var(--dot-cosmic-indigo);
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: var(--dot-vivid-purple);
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: var(--dot-warm-rose);
+    --input: 0 0% 100%;
+    --ring: var(--dot-vivid-purple);
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--dot-cosmic-indigo)), hsl(var(--dot-royal-magenta)));
+    --gradient-accent: linear-gradient(90deg, hsl(var(--dot-royal-magenta)), hsl(var(--dot-vivid-purple)));
+    --gradient-subtle: linear-gradient(180deg, hsl(var(--dot-soft-sand)), hsl(var(--dot-warm-rose)));
+
+    /* Shadows */
+    --shadow-elegant: 0 10px 30px -10px hsl(var(--dot-royal-magenta) / 0.3);
+    --shadow-glow: 0 0 40px hsl(var(--dot-vivid-purple) / 0.2);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +123,157 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Poppins', sans-serif;
+    transition: var(--transition-fast);
+  }
+  
+  [dir="rtl"] body {
+    font-family: 'Noto Kufi Arabic', sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* RTL Support */
+  [dir="rtl"] {
+    text-align: right;
+  }
+  
+  [dir="rtl"] .flex-row-reverse {
+    flex-direction: row-reverse;
+  }
+}
+
+@layer components {
+  /* Hero Section */
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+
+  .hero-text {
+    @apply text-white font-bold tracking-tight;
+  }
+
+  /* DOT Brand Button Variants */
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-accent;
+    box-shadow: var(--shadow-elegant);
+    transition: var(--transition-smooth);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground border border-primary/20 hover:bg-primary hover:text-primary-foreground;
+    transition: var(--transition-smooth);
+  }
+
+  .btn-hero {
+    @apply text-white border-white/30 hover:bg-white/10 backdrop-blur-sm;
+    transition: var(--transition-smooth);
+  }
+
+  .btn-hero:hover {
+    @apply bg-white text-primary;
+    transform: translateY(-2px);
+  }
+
+  /* Card Styles */
+  .card-elegant {
+    @apply bg-card border border-secondary/50 rounded-lg p-6;
+    box-shadow: var(--shadow-elegant);
+    transition: var(--transition-smooth);
+  }
+
+  .card-elegant:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-glow);
+  }
+
+  .card-feature {
+    @apply bg-secondary/30 backdrop-blur-sm border border-secondary rounded-xl p-6;
+    transition: var(--transition-smooth);
+  }
+
+  .card-feature:hover {
+    @apply bg-secondary/50;
+    transform: translateY(-2px);
+  }
+
+  /* Section Styles */
+  .section-primary {
+    @apply bg-background;
+  }
+
+  .section-secondary {
+    @apply bg-secondary/20;
+  }
+
+  .section-hero {
+    background: var(--gradient-hero);
+    position: relative;
+  }
+
+  .section-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 20% 80%, hsl(var(--dot-vivid-purple) / 0.3) 0%, transparent 50%),
+                      radial-gradient(circle at 80% 20%, hsl(var(--dot-warm-rose) / 0.2) 0%, transparent 50%);
+  }
+
+  /* Typography */
+  .heading-xl {
+    @apply text-4xl md:text-6xl font-bold tracking-tight;
+  }
+
+  .heading-lg {
+    @apply text-3xl md:text-5xl font-bold tracking-tight;
+  }
+
+  .heading-md {
+    @apply text-2xl md:text-4xl font-semibold tracking-tight;
+  }
+
+  .heading-sm {
+    @apply text-xl md:text-2xl font-semibold;
+  }
+
+  .text-gradient {
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Animation Classes */
+  .fade-in {
+    @apply animate-in fade-in-0 duration-700;
+  }
+
+  .slide-up {
+    @apply animate-in slide-in-from-bottom-8 duration-700;
+  }
+
+  .slide-right {
+    @apply animate-in slide-in-from-left-8 duration-700;
+  }
+
+  .slide-left {
+    @apply animate-in slide-in-from-right-8 duration-700;
+  }
+
+  /* RTL Animation Adjustments */
+  [dir="rtl"] .slide-right {
+    @apply animate-in slide-in-from-right-8 duration-700;
+  }
+
+  [dir="rtl"] .slide-left {
+    @apply animate-in slide-in-from-left-8 duration-700;
   }
 }

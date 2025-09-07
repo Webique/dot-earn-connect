@@ -57,6 +57,33 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // DOT Brand Colors
+        dot: {
+          "deep-plum": "hsl(var(--dot-deep-plum))",
+          "cosmic-indigo": "hsl(var(--dot-cosmic-indigo))",
+          "royal-magenta": "hsl(var(--dot-royal-magenta))",
+          "vivid-purple": "hsl(var(--dot-vivid-purple))",
+          "warm-rose": "hsl(var(--dot-warm-rose))",
+          "soft-sand": "hsl(var(--dot-soft-sand))",
+        },
+      },
+      fontFamily: {
+        'poppins': ['Poppins', 'sans-serif'],
+        'noto-kufi': ['Noto Kufi Arabic', 'sans-serif'],
+        'sans': ['Poppins', 'system-ui', 'sans-serif'],
+      },
+      backgroundImage: {
+        'gradient-hero': 'var(--gradient-hero)',
+        'gradient-accent': 'var(--gradient-accent)',
+        'gradient-subtle': 'var(--gradient-subtle)',
+      },
+      boxShadow: {
+        'elegant': 'var(--shadow-elegant)',
+        'glow': 'var(--shadow-glow)',
+      },
+      transitionProperty: {
+        'smooth': 'var(--transition-smooth)',
+        'fast': 'var(--transition-fast)',
       },
       borderRadius: {
         lg: "var(--radius)",

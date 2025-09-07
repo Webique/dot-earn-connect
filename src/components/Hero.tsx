@@ -1,0 +1,97 @@
+import React from 'react';
+import { Button } from '@/components/ui/button';
+import { ArrowRight, Sparkles } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
+
+const Hero = () => {
+  const { t, dir } = useLanguage();
+
+  const handleJoinWaitlist = () => {
+    const element = document.querySelector('#contact');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  return (
+    <section id="home" className="section-hero min-h-screen flex items-center justify-center relative overflow-hidden">
+      {/* Dot Matrix Background */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 bg-gradient-to-br from-dot-vivid-purple/20 via-transparent to-dot-warm-rose/20"></div>
+        <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+              <circle cx="20" cy="20" r="2" fill="currentColor" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#dots)" />
+        </svg>
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="fade-in">
+          {/* Brand Badge */}
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-8">
+            <Sparkles className="h-4 w-4 text-dot-vivid-purple mr-2" />
+            <span className="text-white font-medium">
+              {dir === 'rtl' ? 'دوت - نقطة جديدة في عالم الإعلان' : 'DOT - A New Point in Advertising'}
+            </span>
+          </div>
+
+          {/* Main Heading */}
+          <h1 className="heading-xl hero-text mb-6 max-w-4xl mx-auto">
+            {t('hero.headline')}
+          </h1>
+
+          {/* Subheading */}
+          <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
+            {t('hero.subline')}
+          </p>
+
+          {/* CTA Buttons */}
+          <div className={`flex flex-col sm:flex-row gap-4 justify-center items-center ${
+            dir === 'rtl' ? 'sm:flex-row-reverse' : ''
+          }`}>
+            <Button 
+              size="lg"
+              className="btn-hero text-lg px-8 py-4"
+              onClick={handleJoinWaitlist}
+            >
+              {t('hero.cta')}
+              <ArrowRight className={`h-5 w-5 ${dir === 'rtl' ? 'rotate-180 mr-2' : 'ml-2'}`} />
+            </Button>
+          </div>
+
+          {/* Stats/Numbers */}
+          <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-2xl mx-auto">
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold text-white mb-2">1000+</div>
+              <div className="text-white/70">
+                {dir === 'rtl' ? 'مستخدم منتظر' : 'Users Waiting'}
+              </div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold text-white mb-2">100+</div>
+              <div className="text-white/70">
+                {dir === 'rtl' ? 'شركة مهتمة' : 'Interested Companies'}
+              </div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold text-white mb-2">50+</div>
+              <div className="text-white/70">
+                {dir === 'rtl' ? 'مبدع محتوى' : 'Content Creators'}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Floating Elements */}
+      <div className="absolute top-20 left-10 w-20 h-20 bg-dot-vivid-purple/10 rounded-full blur-xl animate-pulse"></div>
+      <div className="absolute bottom-20 right-10 w-32 h-32 bg-dot-warm-rose/10 rounded-full blur-2xl animate-pulse delay-1000"></div>
+      <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-white/5 rounded-full blur-lg animate-pulse delay-500"></div>
+    </section>
+  );
+};
+
+export default Hero;
