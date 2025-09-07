@@ -46,10 +46,6 @@ const Footer = () => {
               {/* Social/Contact Info */}
               <div className="space-y-3">
                 <div className={`flex items-center space-x-3 text-white/70 ${dir === 'rtl' ? 'space-x-reverse flex-row-reverse' : ''}`}>
-                  <Globe className="h-5 w-5 text-dot-vivid-purple" />
-                  <span>dot-platform.com</span>
-                </div>
-                <div className={`flex items-center space-x-3 text-white/70 ${dir === 'rtl' ? 'space-x-reverse flex-row-reverse' : ''}`}>
                   <span>📱</span>
                   <span dir="ltr">+966 55 116 1726</span>
                 </div>

@@ -53,22 +53,22 @@ const Hero = () => {
           </div>
 
           {/* Stats/Numbers */}
-          <div className="mt-8 sm:mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 max-w-2xl mx-auto">
-            <div className="text-center bg-white/5 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-white/10">
-              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1 sm:mb-2">1000+</div>
-              <div className="text-white/70 text-sm sm:text-base">
+          <div className="mt-8 sm:mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 max-w-3xl mx-auto">
+            <div className="text-center bg-white/5 backdrop-blur-sm rounded-full border border-white/10 flex flex-col items-center justify-center w-32 h-32 sm:w-36 sm:h-36 mx-auto">
+              <div className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-1">1000+</div>
+              <div className="text-white/70 text-xs sm:text-sm px-2">
                 {dir === 'rtl' ? 'مستخدم منتظر' : 'Users Waiting'}
               </div>
             </div>
-            <div className="text-center bg-white/5 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-white/10">
-              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1 sm:mb-2">100+</div>
-              <div className="text-white/70 text-sm sm:text-base">
+            <div className="text-center bg-white/5 backdrop-blur-sm rounded-full border border-white/10 flex flex-col items-center justify-center w-32 h-32 sm:w-36 sm:h-36 mx-auto">
+              <div className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-1">100+</div>
+              <div className="text-white/70 text-xs sm:text-sm px-2">
                 {dir === 'rtl' ? 'شركة مهتمة' : 'Interested Companies'}
               </div>
             </div>
-            <div className="text-center bg-white/5 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-white/10">
-              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1 sm:mb-2">50+</div>
-              <div className="text-white/70 text-sm sm:text-base">
+            <div className="text-center bg-white/5 backdrop-blur-sm rounded-full border border-white/10 flex flex-col items-center justify-center w-32 h-32 sm:w-36 sm:h-36 mx-auto">
+              <div className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-1">50+</div>
+              <div className="text-white/70 text-xs sm:text-sm px-2">
                 {dir === 'rtl' ? 'مبدع محتوى' : 'Content Creators'}
               </div>
             </div>
