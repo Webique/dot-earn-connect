@@ -26,7 +26,7 @@ const Hero = () => {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-6 lg:px-8 text-center">
-        <div className="fade-in py-8 sm:py-12">
+        <div className="fade-in py-12 sm:py-16 lg:py-20 flex flex-col justify-center min-h-screen">
 
           {/* Main Heading */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 max-w-4xl mx-auto leading-tight">
@@ -34,17 +34,17 @@ const Hero = () => {
           </h1>
 
           {/* Subheading */}
-          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 mb-6 sm:mb-8 max-w-3xl mx-auto leading-relaxed px-2">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 mb-8 sm:mb-10 max-w-3xl mx-auto leading-relaxed px-2">
             {t('hero.subline')}
           </p>
 
           {/* CTA Buttons */}
-          <div className={`flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-8 sm:mb-12 ${
+          <div className={`flex flex-col sm:flex-row gap-4 sm:gap-4 justify-center items-center mb-10 sm:mb-12 ${
             dir === 'rtl' ? 'sm:flex-row-reverse' : ''
           }`}>
             <Button 
               size="lg"
-              className="bg-white text-primary hover:bg-primary hover:text-white border-2 border-white hover:border-primary text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 w-full sm:w-auto"
+              className="bg-white text-primary hover:bg-primary hover:text-white border-2 border-white hover:border-primary text-base sm:text-lg px-8 sm:px-8 py-4 sm:py-4 font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 w-full sm:w-auto"
               onClick={handleContactUs}
             >
               {dir === 'rtl' ? 'تواصل معنا' : 'Contact Us'}
@@ -53,21 +53,21 @@ const Hero = () => {
           </div>
 
           {/* Stats/Numbers */}
-          <div className="mt-8 sm:mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 max-w-3xl mx-auto">
-            <div className="text-center bg-white/5 backdrop-blur-sm rounded-full border border-white/10 flex flex-col items-center justify-center w-32 h-32 sm:w-36 sm:h-36 mx-auto">
-              <div className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-1">1000+</div>
+          <div className="mt-6 sm:mt-8 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 max-w-3xl mx-auto">
+            <div className="text-center bg-white/5 backdrop-blur-sm rounded-full border border-white/10 flex flex-col items-center justify-center w-28 h-28 sm:w-36 sm:h-36 mx-auto">
+              <div className="text-lg sm:text-2xl md:text-3xl font-bold text-white mb-1">1000+</div>
               <div className="text-white/70 text-xs sm:text-sm px-2">
                 {dir === 'rtl' ? 'مستخدم منتظر' : 'Users Waiting'}
               </div>
             </div>
-            <div className="text-center bg-white/5 backdrop-blur-sm rounded-full border border-white/10 flex flex-col items-center justify-center w-32 h-32 sm:w-36 sm:h-36 mx-auto">
-              <div className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-1">100+</div>
+            <div className="text-center bg-white/5 backdrop-blur-sm rounded-full border border-white/10 flex flex-col items-center justify-center w-28 h-28 sm:w-36 sm:h-36 mx-auto">
+              <div className="text-lg sm:text-2xl md:text-3xl font-bold text-white mb-1">100+</div>
               <div className="text-white/70 text-xs sm:text-sm px-2">
                 {dir === 'rtl' ? 'شركة مهتمة' : 'Interested Companies'}
               </div>
             </div>
-            <div className="text-center bg-white/5 backdrop-blur-sm rounded-full border border-white/10 flex flex-col items-center justify-center w-32 h-32 sm:w-36 sm:h-36 mx-auto">
-              <div className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-1">50+</div>
+            <div className="text-center bg-white/5 backdrop-blur-sm rounded-full border border-white/10 flex flex-col items-center justify-center w-28 h-28 sm:w-36 sm:h-36 mx-auto">
+              <div className="text-lg sm:text-2xl md:text-3xl font-bold text-white mb-1">50+</div>
               <div className="text-white/70 text-xs sm:text-sm px-2">
                 {dir === 'rtl' ? 'مبدع محتوى' : 'Content Creators'}
               </div>
